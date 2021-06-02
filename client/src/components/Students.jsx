@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const Student = () => {
+const Students = () => {
   const [students, setStudents] = useState([]);
 
-  const getStudents = () => {
+  useEffect(() => {
     axios.get('/api/students')
       .then(results => setStudents(results.data))
       .catch(err => console.log(err));
-  }
-  getStudents();
+  }, []);
 
   return (
-    <div className="students">
+    <div className="students-container">
       {students.map((student, index) => {
         let average = student.grades.reduce((a, b) => Number(a) + Number(b)) / student.grades.length;
         return (
@@ -37,4 +36,4 @@ const Student = () => {
   )
 }
 
-export default Student;
+export default Students;

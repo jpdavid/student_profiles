@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Student from './Student';
+import Students from './Students';
 
 const App = () => {
 
   return (
-    <div>
-      <Student/>
+    <div id="wrapper">
+      <Students/>
     </div>
   );
 }

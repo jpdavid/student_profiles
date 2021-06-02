@@ -108,9 +108,9 @@ var _axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 
 var _axios2 = _interopRequireDefault(_axios);
 
-var _Student = __webpack_require__(/*! ./Student */ "./client/src/components/Student.jsx");
+var _Students = __webpack_require__(/*! ./Students */ "./client/src/components/Students.jsx");
 
-var _Student2 = _interopRequireDefault(_Student);
+var _Students2 = _interopRequireDefault(_Students);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -118,8 +118,8 @@ var App = function App() {
 
   return _react2.default.createElement(
     'div',
-    null,
-    _react2.default.createElement(_Student2.default, null)
+    { id: 'wrapper' },
+    _react2.default.createElement(_Students2.default, null)
   );
 };
 
@@ -127,10 +127,10 @@ exports.default = App;
 
 /***/ }),
 
-/***/ "./client/src/components/Student.jsx":
-/*!*******************************************!*\
-  !*** ./client/src/components/Student.jsx ***!
-  \*******************************************/
+/***/ "./client/src/components/Students.jsx":
+/*!********************************************!*\
+  !*** ./client/src/components/Students.jsx ***!
+  \********************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -153,24 +153,23 @@ var _axios2 = _interopRequireDefault(_axios);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var Student = function Student() {
+var Students = function Students() {
   var _useState = (0, _react.useState)([]),
       _useState2 = _slicedToArray(_useState, 2),
       students = _useState2[0],
       setStudents = _useState2[1];
 
-  var getStudents = function getStudents() {
+  (0, _react.useEffect)(function () {
     _axios2.default.get('/api/students').then(function (results) {
       return setStudents(results.data);
     }).catch(function (err) {
       return console.log(err);
     });
-  };
-  getStudents();
+  }, []);
 
   return _react2.default.createElement(
     'div',
-    { className: 'students' },
+    { className: 'students-container' },
     students.map(function (student, index) {
       var average = student.grades.reduce(function (a, b) {
         return Number(a) + Number(b);
@@ -223,7 +222,7 @@ var Student = function Student() {
   );
 };
 
-exports.default = Student;
+exports.default = Students;
 
 /***/ }),
 
