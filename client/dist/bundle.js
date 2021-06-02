@@ -108,17 +108,86 @@ var _axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 
 var _axios2 = _interopRequireDefault(_axios);
 
+var _Student = __webpack_require__(/*! ./Student */ "./client/src/components/Student.jsx");
+
+var _Student2 = _interopRequireDefault(_Student);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var App = function App() {
+
   return _react2.default.createElement(
     'div',
     null,
-    'Hello from React App'
+    'Hello from React App',
+    _react2.default.createElement(_Student2.default, null)
   );
 };
 
 exports.default = App;
+
+/***/ }),
+
+/***/ "./client/src/components/Student.jsx":
+/*!*******************************************!*\
+  !*** ./client/src/components/Student.jsx ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+
+var _axios2 = _interopRequireDefault(_axios);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Student = function Student() {
+  var _useState = (0, _react.useState)([]),
+      _useState2 = _slicedToArray(_useState, 2),
+      students = _useState2[0],
+      setStudents = _useState2[1];
+
+  var getStudents = function getStudents() {
+    _axios2.default.get('/api/students').then(function (results) {
+      return setStudents(results.data);
+    }).catch(function (err) {
+      return console.log(err);
+    });
+  };
+  getStudents();
+
+  return _react2.default.createElement(
+    'div',
+    { className: 'students' },
+    students.map(function (student, index) {
+      return _react2.default.createElement(
+        'div',
+        { className: 'student', key: index },
+        _react2.default.createElement('img', { src: student.pic }),
+        _react2.default.createElement(
+          'span',
+          null,
+          student.firstName
+        )
+      );
+    })
+  );
+};
+
+exports.default = Student;
 
 /***/ }),
 
