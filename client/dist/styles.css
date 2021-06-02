@@ -1,4 +1,5 @@
 body {
+  font-family: Raleway;
   background-color: lightgray;
 }
 
@@ -17,4 +18,29 @@ body {
   flex-direction: column;
   /* border: 1px solid blue;
   border-radius: 10px; */
+}
+
+.student {
+  display: flex;
+  padding: 20px;
+  align-items: center;
+}
+
+.student-pic {
+  object-fit: cover;
+  height: 125px;
+  width: 125px;
+  border: 1px solid lightgray;
+  border-radius: 50%;
+  margin-right: 35px;
+}
+
+.student-name {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.student-details {
+  margin-left: 20px;
 }

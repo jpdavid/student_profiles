@@ -16,19 +16,17 @@ const Students = () => {
         let average = student.grades.reduce((a, b) => Number(a) + Number(b)) / student.grades.length;
         return (
           <div className="student" key={index}>
-            <img src={student.pic}></img>
-            <br/>
-            <br/>
-            <div style={{fontWeight: "bold"}}>{student.firstName} {student.lastName}</div>
-            <br/>
-            <div>Email: {student.email}</div>
-            <br/>
-            <div>Company: {student.company}</div>
-            <br/>
-            <div>Skill: {student.skill}</div>
-            <br/>
-            <div>Average: {average}%</div>
-            <br/>
+            <img src={student.pic} className="student-pic"></img>
+            <div className="student-info">
+              <div className="student-name">{student.firstName} {student.lastName}</div>
+              <br/>
+              <div className="student-details">
+                <div>Email: {student.email}</div>
+                <div>Company: {student.company}</div>
+                <div>Skill: {student.skill}</div>
+                <div>Average: {average}%</div>
+              </div>
+            </div>
           </div>
         )
       })}

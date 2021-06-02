@@ -177,46 +177,48 @@ var Students = function Students() {
       return _react2.default.createElement(
         'div',
         { className: 'student', key: index },
-        _react2.default.createElement('img', { src: student.pic }),
-        _react2.default.createElement('br', null),
-        _react2.default.createElement('br', null),
+        _react2.default.createElement('img', { src: student.pic, className: 'student-pic' }),
         _react2.default.createElement(
           'div',
-          { style: { fontWeight: "bold" } },
-          student.firstName,
-          ' ',
-          student.lastName
-        ),
-        _react2.default.createElement('br', null),
-        _react2.default.createElement(
-          'div',
-          null,
-          'Email: ',
-          student.email
-        ),
-        _react2.default.createElement('br', null),
-        _react2.default.createElement(
-          'div',
-          null,
-          'Company: ',
-          student.company
-        ),
-        _react2.default.createElement('br', null),
-        _react2.default.createElement(
-          'div',
-          null,
-          'Skill: ',
-          student.skill
-        ),
-        _react2.default.createElement('br', null),
-        _react2.default.createElement(
-          'div',
-          null,
-          'Average: ',
-          average,
-          '%'
-        ),
-        _react2.default.createElement('br', null)
+          { className: 'student-info' },
+          _react2.default.createElement(
+            'div',
+            { className: 'student-name' },
+            student.firstName,
+            ' ',
+            student.lastName
+          ),
+          _react2.default.createElement('br', null),
+          _react2.default.createElement(
+            'div',
+            { className: 'student-details' },
+            _react2.default.createElement(
+              'div',
+              null,
+              'Email: ',
+              student.email
+            ),
+            _react2.default.createElement(
+              'div',
+              null,
+              'Company: ',
+              student.company
+            ),
+            _react2.default.createElement(
+              'div',
+              null,
+              'Skill: ',
+              student.skill
+            ),
+            _react2.default.createElement(
+              'div',
+              null,
+              'Average: ',
+              average,
+              '%'
+            )
+          )
+        )
       );
     })
   );
