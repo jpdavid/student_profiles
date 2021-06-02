@@ -6,7 +6,6 @@ const App = () => {
 
   return (
     <div>
-      Hello from React App
       <Student/>
     </div>
   );

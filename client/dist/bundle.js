@@ -119,7 +119,6 @@ var App = function App() {
   return _react2.default.createElement(
     'div',
     null,
-    'Hello from React App',
     _react2.default.createElement(_Student2.default, null)
   );
 };
@@ -177,11 +176,44 @@ var Student = function Student() {
         'div',
         { className: 'student', key: index },
         _react2.default.createElement('img', { src: student.pic }),
+        _react2.default.createElement('br', null),
+        _react2.default.createElement('br', null),
         _react2.default.createElement(
-          'span',
+          'div',
+          { style: { fontWeight: "bold" } },
+          student.firstName,
+          ' ',
+          student.lastName
+        ),
+        _react2.default.createElement('br', null),
+        _react2.default.createElement(
+          'div',
           null,
-          student.firstName
-        )
+          'Email: ',
+          student.email
+        ),
+        _react2.default.createElement('br', null),
+        _react2.default.createElement(
+          'div',
+          null,
+          'Company: ',
+          student.company
+        ),
+        _react2.default.createElement('br', null),
+        _react2.default.createElement(
+          'div',
+          null,
+          'Skill: ',
+          student.skill
+        ),
+        _react2.default.createElement('br', null),
+        _react2.default.createElement(
+          'div',
+          null,
+          'Average: ',
+          student.grades[1]
+        ),
+        _react2.default.createElement('br', null)
       );
     })
   );

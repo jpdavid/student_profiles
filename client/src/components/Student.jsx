@@ -17,7 +17,18 @@ const Student = () => {
         return (
           <div className="student" key={index}>
             <img src={student.pic}></img>
-            <span>{student.firstName}</span>
+            <br/>
+            <br/>
+            <div style={{fontWeight: "bold"}}>{student.firstName} {student.lastName}</div>
+            <br/>
+            <div>Email: {student.email}</div>
+            <br/>
+            <div>Company: {student.company}</div>
+            <br/>
+            <div>Skill: {student.skill}</div>
+            <br/>
+            <div>Average: {student.grades[1]}</div>
+            <br/>
           </div>
         )
       })}
