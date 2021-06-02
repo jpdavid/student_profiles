@@ -14,6 +14,7 @@ const Student = () => {
   return (
     <div className="students">
       {students.map((student, index) => {
+        let average = student.grades.reduce((a, b) => Number(a) + Number(b)) / student.grades.length;
         return (
           <div className="student" key={index}>
             <img src={student.pic}></img>
@@ -27,7 +28,7 @@ const Student = () => {
             <br/>
             <div>Skill: {student.skill}</div>
             <br/>
-            <div>Average: {student.grades[1]}</div>
+            <div>Average: {average}%</div>
             <br/>
           </div>
         )

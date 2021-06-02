@@ -172,6 +172,9 @@ var Student = function Student() {
     'div',
     { className: 'students' },
     students.map(function (student, index) {
+      var average = student.grades.reduce(function (a, b) {
+        return Number(a) + Number(b);
+      }) / student.grades.length;
       return _react2.default.createElement(
         'div',
         { className: 'student', key: index },
@@ -211,7 +214,8 @@ var Student = function Student() {
           'div',
           null,
           'Average: ',
-          student.grades[1]
+          average,
+          '%'
         ),
         _react2.default.createElement('br', null)
       );
