@@ -30,8 +30,8 @@ body {
 
 .student-pic {
   object-fit: cover;
-  height: 125px;
-  width: 125px;
+  height: 129px;
+  width: 129px;
   border: 1px solid lightgray;
   border-radius: 50%;
   margin-right: 35px;
@@ -43,7 +43,7 @@ body {
 .student-name {
   text-transform: uppercase;
   font-weight: 700;
-  font-size: 35px;
+  font-size: 37px;
   padding-bottom: 13px;
 }
 
