@@ -19,7 +19,6 @@ const Students = () => {
             <img src={student.pic} className="student-pic"></img>
             <div className="student-info">
               <div className="student-name">{student.firstName} {student.lastName}</div>
-              <br/>
               <div className="student-details-container">
                 <div className="student-details">Email: {student.email}</div>
                 <div className="student-details">Company: {student.company}</div>

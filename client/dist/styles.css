@@ -13,19 +13,19 @@ body {
 }
 
 .students-container {
-  /* margin: 5%; */
-  padding-left: 3%;
-  padding-right: 3%;
   display: flex;
   flex-direction: column;
-  /* border: 1px solid blue;
-  border-radius: 10px; */
 }
 
 .student {
   display: flex;
-  padding: 20px;
+  padding: 15px 25px 15px 25px;
   align-items: center;
+  border-bottom: 2px solid whitesmoke;
+}
+
+.student:last-child {
+  border-bottom: none;
 }
 
 .student-pic {
@@ -37,16 +37,19 @@ body {
   margin-right: 35px;
 }
 
+.student-info {
+}
+
 .student-name {
   text-transform: uppercase;
   font-weight: 700;
-  font-size: 32px;
+  font-size: 35px;
+  padding-bottom: 13px;
 }
 
 .student-details-container {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   margin-left: 18px;
   font-weight: 200;
 }
