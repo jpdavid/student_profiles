@@ -6,7 +6,7 @@ const path = require('path');
 
 const router = require('./router.js');
 
-const PORT = 8080;
+const PORT = 3000;
 const server = express();
 
 server.use(bodyparser.json());

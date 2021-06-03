@@ -1,13 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;700&display=swap');
+
 body {
-  font-family: Raleway;
-  background-color: lightgray;
+  font-family: 'Raleway', sans-serif;
+  background-color: rgb(241, 241, 241);
 }
 
 #wrapper {
   margin: 5% 20% 5% 20%;
-  background-color: whitesmoke;
-  border-radius: 10px;
-  box-shadow: 2px 4px 5px gray;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 1px 3px 3px rgb(200, 200, 200);
 }
 
 .students-container {
@@ -37,10 +39,18 @@ body {
 
 .student-name {
   text-transform: uppercase;
-  font-weight: bold;
-  font-size: 30px;
+  font-weight: 700;
+  font-size: 32px;
+}
+
+.student-details-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-left: 18px;
+  font-weight: 200;
 }
 
 .student-details {
-  margin-left: 20px;
+  line-height: 1.5;
 }

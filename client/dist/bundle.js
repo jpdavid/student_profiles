@@ -191,28 +191,28 @@ var Students = function Students() {
           _react2.default.createElement('br', null),
           _react2.default.createElement(
             'div',
-            { className: 'student-details' },
+            { className: 'student-details-container' },
             _react2.default.createElement(
               'div',
-              null,
+              { className: 'student-details' },
               'Email: ',
               student.email
             ),
             _react2.default.createElement(
               'div',
-              null,
+              { className: 'student-details' },
               'Company: ',
               student.company
             ),
             _react2.default.createElement(
               'div',
-              null,
+              { className: 'student-details' },
               'Skill: ',
               student.skill
             ),
             _react2.default.createElement(
               'div',
-              null,
+              { className: 'student-details' },
               'Average: ',
               average,
               '%'
