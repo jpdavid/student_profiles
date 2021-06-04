@@ -20,6 +20,7 @@ const Students = () => {
 
   return (
     <div id="students-container">
+      <input type="text" placeholder="Search by name"></input>
       {students.map((student, index) => {
         let average = student.grades.reduce((a, b) => Number(a) + Number(b)) / student.grades.length;
         return (

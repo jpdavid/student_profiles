@@ -178,6 +178,7 @@ var Students = function Students() {
   return _react2.default.createElement(
     'div',
     { id: 'students-container' },
+    _react2.default.createElement('input', { type: 'text', placeholder: 'Search by name' }),
     students.map(function (student, index) {
       var average = student.grades.reduce(function (a, b) {
         return Number(a) + Number(b);
