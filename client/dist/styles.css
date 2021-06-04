@@ -16,7 +16,7 @@ body {
 #students-container {
   display: flex;
   flex-direction: column;
-  height: 600px;
+  height: 655px;
   overflow-y: scroll;
 }
 
@@ -101,4 +101,5 @@ button {
 
 button:hover {
   cursor: pointer;
+  color: black;
 }
