@@ -32,22 +32,26 @@ const Students = () => {
       />
       {students.filter(student => student.firstName.toLowerCase().includes(input.toLowerCase()) ||student.lastName.toLowerCase().includes(input.toLowerCase()) || input === '')
         .map((student, index) => {
-        let average = student.grades.reduce((a, b) => Number(a) + Number(b)) / student.grades.length;
-        return (
-          <div className="student" key={index}>
-            <img src={student.pic} className="student-pic"></img>
-            <div className="student-info">
-              <div className="student-name">{student.firstName} {student.lastName}</div>
-              <div className="student-details-container">
-                <div className="student-details">Email: {student.email}</div>
-                <div className="student-details">Company: {student.company}</div>
-                <div className="student-details">Skill: {student.skill}</div>
-                <div className="student-details">Average: {average}%</div>
+          let average = student.grades.reduce((a, b) => Number(a) + Number(b)) / student.grades.length;
+          return (
+            <div className="student" key={index}>
+              <img src={student.pic} className="student-pic"></img>
+
+              <div className="student-info">
+                <div className="student-name">{student.firstName} {student.lastName}</div>
+                <div className="student-details-container">
+                  <div className="student-details">Email: {student.email}</div>
+                  <div className="student-details">Company: {student.company}</div>
+                  <div className="student-details">Skill: {student.skill}</div>
+                  <div className="student-details">Average: {average}%</div>
+                </div>
               </div>
+
+              <button><i className="fas fa-plus"/></button>
             </div>
-          </div>
-        )
-      })}
+          )
+        })
+      }
     </div>
   )
 }

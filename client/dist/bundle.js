@@ -241,6 +241,11 @@ var Students = function Students() {
               '%'
             )
           )
+        ),
+        _react2.default.createElement(
+          'button',
+          null,
+          _react2.default.createElement('i', { className: 'fas fa-plus' })
         )
       );
     })
