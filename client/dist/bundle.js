@@ -161,8 +161,8 @@ var Students = function Students() {
 
   var _useState3 = (0, _react.useState)(''),
       _useState4 = _slicedToArray(_useState3, 2),
-      input = _useState4[0],
-      setInput = _useState4[1];
+      filteredStudents = _useState4[0],
+      setfilteredStudents = _useState4[1];
 
   (0, _react.useEffect)(function () {
     _axios2.default.get('/api/students').then(function (results) {
@@ -184,7 +184,14 @@ var Students = function Students() {
   return _react2.default.createElement(
     'div',
     { id: 'students-container' },
-    _react2.default.createElement('input', { type: 'text', placeholder: 'Search by name' }),
+    _react2.default.createElement('input', {
+      type: 'text',
+      placeholder: 'Search by name',
+      value: filteredStudents,
+      onChange: function onChange(e) {
+        return setfilteredStudents(e.target.value);
+      }
+    }),
     students.map(function (student, index) {
       var average = student.grades.reduce(function (a, b) {
         return Number(a) + Number(b);
