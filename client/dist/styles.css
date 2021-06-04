@@ -10,13 +10,18 @@ body {
   background-color: white;
   border-radius: 12px;
   box-shadow: 1px 3px 3px rgb(200, 200, 200);
+  /* overflow-y: hidden; */
 }
 
-.students-container {
+#students-container {
   display: flex;
   flex-direction: column;
   height: 600px;
   overflow-y: scroll;
+}
+
+#students-container::-webkit-scrollbar {
+  display: none;
 }
 
 .student {

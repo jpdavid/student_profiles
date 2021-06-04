@@ -167,9 +167,17 @@ var Students = function Students() {
     });
   }, []);
 
+  // const handleScroll = () => {
+  //   console.log("Scrolling!");
+  //   let studentsContainerStyles = document.getElementById("students-container").style;
+  //   studentsContainerStyles.insertRule(`::-webkit-scrollbar {
+  //     display: auto;
+  //   }`)
+  // }
+
   return _react2.default.createElement(
     'div',
-    { className: 'students-container' },
+    { id: 'students-container' },
     students.map(function (student, index) {
       var average = student.grades.reduce(function (a, b) {
         return Number(a) + Number(b);

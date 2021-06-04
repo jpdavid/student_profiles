@@ -10,8 +10,16 @@ const Students = () => {
       .catch(err => console.log(err));
   }, []);
 
+  // const handleScroll = () => {
+  //   console.log("Scrolling!");
+  //   let studentsContainerStyles = document.getElementById("students-container").style;
+  //   studentsContainerStyles.insertRule(`::-webkit-scrollbar {
+  //     display: auto;
+  //   }`)
+  // }
+
   return (
-    <div className="students-container">
+    <div id="students-container">
       {students.map((student, index) => {
         let average = student.grades.reduce((a, b) => Number(a) + Number(b)) / student.grades.length;
         return (
