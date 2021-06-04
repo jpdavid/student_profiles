@@ -192,7 +192,9 @@ var Students = function Students() {
         return setInput(e.target.value);
       }
     }),
-    students.map(function (student, index) {
+    students.filter(function (student) {
+      return student.firstName.toLowerCase().includes(input.toLowerCase()) || student.lastName.toLowerCase().includes(input.toLowerCase()) || input === '';
+    }).map(function (student, index) {
       var average = student.grades.reduce(function (a, b) {
         return Number(a) + Number(b);
       }) / student.grades.length;
