@@ -3,10 +3,14 @@ import axios from 'axios';
 
 const Students = () => {
   const [students, setStudents] = useState([]);
+  const [input, setInput] = useState('');
 
   useEffect(() => {
     axios.get('/api/students')
-      .then(results => setStudents(results.data))
+      .then(results => {
+        localStorage.setItem('students', JSON.stringify(results.data));
+        setStudents(JSON.parse(localStorage['students']));
+      })
       .catch(err => console.log(err));
   }, []);
 

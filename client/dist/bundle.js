@@ -159,9 +159,15 @@ var Students = function Students() {
       students = _useState2[0],
       setStudents = _useState2[1];
 
+  var _useState3 = (0, _react.useState)(''),
+      _useState4 = _slicedToArray(_useState3, 2),
+      input = _useState4[0],
+      setInput = _useState4[1];
+
   (0, _react.useEffect)(function () {
     _axios2.default.get('/api/students').then(function (results) {
-      return setStudents(results.data);
+      localStorage.setItem('students', JSON.stringify(results.data));
+      setStudents(JSON.parse(localStorage['students']));
     }).catch(function (err) {
       return console.log(err);
     });
