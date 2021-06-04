@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const Students = () => {
   const [students, setStudents] = useState([]);
-  const [filteredStudents, setfilteredStudents] = useState('');
+  const [input, setInput] = useState('');
 
   useEffect(() => {
     axios.get('/api/students')
@@ -27,8 +27,8 @@ const Students = () => {
       <input
         type="text"
         placeholder="Search by name"
-        value={filteredStudents}
-        onChange={e => setfilteredStudents(e.target.value)}
+        value={input}
+        onChange={e => setInput(e.target.value)}
       />
       {students.map((student, index) => {
         let average = student.grades.reduce((a, b) => Number(a) + Number(b)) / student.grades.length;

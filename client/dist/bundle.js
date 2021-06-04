@@ -161,8 +161,8 @@ var Students = function Students() {
 
   var _useState3 = (0, _react.useState)(''),
       _useState4 = _slicedToArray(_useState3, 2),
-      filteredStudents = _useState4[0],
-      setfilteredStudents = _useState4[1];
+      input = _useState4[0],
+      setInput = _useState4[1];
 
   (0, _react.useEffect)(function () {
     _axios2.default.get('/api/students').then(function (results) {
@@ -187,9 +187,9 @@ var Students = function Students() {
     _react2.default.createElement('input', {
       type: 'text',
       placeholder: 'Search by name',
-      value: filteredStudents,
+      value: input,
       onChange: function onChange(e) {
-        return setfilteredStudents(e.target.value);
+        return setInput(e.target.value);
       }
     }),
     students.map(function (student, index) {
