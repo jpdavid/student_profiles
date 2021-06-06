@@ -236,6 +236,14 @@ var Students = function Students() {
         return setInput(e.target.value);
       }
     }),
+    _react2.default.createElement('input', {
+      type: 'text',
+      placeholder: 'Search by tag',
+      value: input,
+      onChange: function onChange(e) {
+        return setInput(e.target.value);
+      }
+    }),
     students.filter(function (student) {
       return student.firstName.toLowerCase().includes(input.toLowerCase()) || student.lastName.toLowerCase().includes(input.toLowerCase()) || input === '';
     }).map(function (student, index) {

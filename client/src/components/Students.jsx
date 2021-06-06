@@ -56,6 +56,12 @@ const Students = () => {
         value={input}
         onChange={e => setInput(e.target.value)}
       />
+      <input
+        type="text"
+        placeholder="Search by tag"
+        value={input}
+        onChange={e => setInput(e.target.value)}
+      />
       {students.filter(student => student.firstName.toLowerCase().includes(input.toLowerCase()) ||student.lastName.toLowerCase().includes(input.toLowerCase()) || input === '')
         .map((student, index) => {
           let average = student.grades.reduce((a, b) => Number(a) + Number(b)) / student.grades.length;
