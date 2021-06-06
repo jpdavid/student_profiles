@@ -165,13 +165,18 @@ var Students = function Students() {
 
   var _useState3 = (0, _react.useState)(''),
       _useState4 = _slicedToArray(_useState3, 2),
-      input = _useState4[0],
-      setInput = _useState4[1];
+      nameInput = _useState4[0],
+      setNameInput = _useState4[1];
 
-  var _useState5 = (0, _react.useState)({}),
+  var _useState5 = (0, _react.useState)(''),
       _useState6 = _slicedToArray(_useState5, 2),
-      expandedView = _useState6[0],
-      setExpandedView = _useState6[1];
+      tageInput = _useState6[0],
+      setTagInput = _useState6[1];
+
+  var _useState7 = (0, _react.useState)({}),
+      _useState8 = _slicedToArray(_useState7, 2),
+      expandedView = _useState8[0],
+      setExpandedView = _useState8[1];
 
   (0, _react.useEffect)(function () {
     _axios2.default.get('/api/students').then(function (results) {
@@ -231,21 +236,13 @@ var Students = function Students() {
     _react2.default.createElement('input', {
       type: 'text',
       placeholder: 'Search by name',
-      value: input,
+      value: nameInput,
       onChange: function onChange(e) {
-        return setInput(e.target.value);
-      }
-    }),
-    _react2.default.createElement('input', {
-      type: 'text',
-      placeholder: 'Search by tag',
-      value: input,
-      onChange: function onChange(e) {
-        return setInput(e.target.value);
+        return setNameInput(e.target.value);
       }
     }),
     students.filter(function (student) {
-      return student.firstName.toLowerCase().includes(input.toLowerCase()) || student.lastName.toLowerCase().includes(input.toLowerCase()) || input === '';
+      return student.firstName.toLowerCase().includes(nameInput.toLowerCase()) || student.lastName.toLowerCase().includes(nameInput.toLowerCase()) || nameInput === '';
     }).map(function (student, index) {
       var average = student.grades.reduce(function (a, b) {
         return Number(a) + Number(b);

@@ -3,7 +3,8 @@ import axios from 'axios';
 
 const Students = () => {
   const [students, setStudents] = useState([]);
-  const [input, setInput] = useState('');
+  const [nameInput, setNameInput] = useState('');
+  const [tageInput, setTagInput] = useState('');
   const [expandedView, setExpandedView] = useState({});
 
   useEffect(() => {
@@ -53,16 +54,16 @@ const Students = () => {
       <input
         type="text"
         placeholder="Search by name"
-        value={input}
-        onChange={e => setInput(e.target.value)}
+        value={nameInput}
+        onChange={e => setNameInput(e.target.value)}
       />
-      <input
+      {/* <input
         type="text"
         placeholder="Search by tag"
-        value={input}
-        onChange={e => setInput(e.target.value)}
-      />
-      {students.filter(student => student.firstName.toLowerCase().includes(input.toLowerCase()) ||student.lastName.toLowerCase().includes(input.toLowerCase()) || input === '')
+        value={tagInput}
+        onChange={e => setTagInput(e.target.value)}
+      /> */}
+      {students.filter(student => student.firstName.toLowerCase().includes(nameInput.toLowerCase()) ||student.lastName.toLowerCase().includes(nameInput.toLowerCase()) || nameInput === '')
         .map((student, index) => {
           let average = student.grades.reduce((a, b) => Number(a) + Number(b)) / student.grades.length;
           return (
