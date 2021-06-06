@@ -5,7 +5,7 @@ const Students = () => {
   const [students, setStudents] = useState([]);
   const [nameInput, setNameInput] = useState('');
   const [searchTagInput, setSearchTagInput] = useState('');
-  const [addTagInput, setAddTagInput] = useState('');
+  const [addTagInput, setAddTagInput] = useState({});
   const [tags, setTags] = useState({});
   const [expandedView, setExpandedView] = useState({});
 
@@ -39,10 +39,13 @@ const Students = () => {
     const { key } = e;
     if (key === 'Enter') {
       e.preventDefault();
-      const index = e.target.getAttribute("name");
-      console.log(index)
-      // setTags({...tags, [index]: [...tags[index], addTagInput]});
-      // setAddTagInput('');
+      const indexTag = e.target.getAttribute("name");
+      if (!tags[indexTag]) {
+        setTags({...tags, [indexTag]: [addTagInput[indexTag]]});
+      } else {
+        setTags({...tags, [indexTag]: [...tags[indexTag], addTagInput[indexTag]]});
+      }
+      setAddTagInput('');
     }
   }
 
@@ -91,17 +94,20 @@ const Students = () => {
                   <div className="student-details">Skill: {student.skill}</div>
                   <div className="student-details">Average: {average}%</div>
                   {expandedViewMode(index, student.grades)}
-                  {/* {tags[index].map((tag, index) => {
-                    return (
-                      <div key={index}>{tag}</div>
-                    )
-                  })} */}
+                  {tags[index]
+                  ? tags[index].map((tag, index) => {
+                      return (
+                        <div key={index}>{tag}</div>
+                      )
+                    })
+                  : null
+                  }
                   <input
                     type="text"
                     placeholder="Add a tag"
-                    value={addTagInput}
+                    value={addTagInput[index] || ''}
                     name={index}
-                    onChange={e => setAddTagInput(e.target.value)}
+                    onChange={e => setAddTagInput({...addTagInput, [index]: e.target.value})}
                     onKeyDown={handleKeyDown}
                   />
                 </div>

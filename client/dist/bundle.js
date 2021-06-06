@@ -155,6 +155,8 @@ var _axios2 = _interopRequireDefault(_axios);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var Students = function Students() {
@@ -173,7 +175,7 @@ var Students = function Students() {
       searchTagInput = _useState6[0],
       setSearchTagInput = _useState6[1];
 
-  var _useState7 = (0, _react.useState)(''),
+  var _useState7 = (0, _react.useState)({}),
       _useState8 = _slicedToArray(_useState7, 2),
       addTagInput = _useState8[0],
       setAddTagInput = _useState8[1];
@@ -219,10 +221,13 @@ var Students = function Students() {
 
     if (key === 'Enter') {
       e.preventDefault();
-      var index = e.target.getAttribute("name");
-      console.log(index);
-      // setTags({...tags, [index]: [...tags[index], addTagInput]});
-      // setAddTagInput('');
+      var indexTag = e.target.getAttribute("name");
+      if (!tags[indexTag]) {
+        setTags(_extends({}, tags, _defineProperty({}, indexTag, [addTagInput[indexTag]])));
+      } else {
+        setTags(_extends({}, tags, _defineProperty({}, indexTag, [].concat(_toConsumableArray(tags[indexTag]), [addTagInput[indexTag]]))));
+      }
+      setAddTagInput('');
     }
   };
 
@@ -320,13 +325,20 @@ var Students = function Students() {
               '%'
             ),
             expandedViewMode(index, student.grades),
+            tags[index] ? tags[index].map(function (tag, index) {
+              return _react2.default.createElement(
+                'div',
+                { key: index },
+                tag
+              );
+            }) : null,
             _react2.default.createElement('input', {
               type: 'text',
               placeholder: 'Add a tag',
-              value: addTagInput,
+              value: addTagInput[index] || '',
               name: index,
               onChange: function onChange(e) {
-                return setAddTagInput(e.target.value);
+                return setAddTagInput(_extends({}, addTagInput, _defineProperty({}, index, e.target.value)));
               },
               onKeyDown: handleKeyDown
             })
