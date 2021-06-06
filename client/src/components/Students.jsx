@@ -112,7 +112,7 @@ const Students = () => {
                     onChange={e => setAddTagInput({...addTagInput, [index]: e.target.value})}
                     onKeyDown={handleKeyDown}
                   /> */}
-                  <Tags index={index} />
+                  <Tags index={index}/>
 
                 </div>
               </div>
