@@ -199,12 +199,24 @@ var Students = function Students() {
     }
   };
 
-  var expandedViewMode = function expandedViewMode(index) {
+  var expandedViewMode = function expandedViewMode(index, grades) {
     if (expandedView[index]) {
       return _react2.default.createElement(
         'div',
         null,
-        'Hellooooooo'
+        _react2.default.createElement('br', null),
+        grades.map(function (grade, index) {
+          var testNum = index + 1;
+          return _react2.default.createElement(
+            'div',
+            { key: index },
+            'Test ',
+            testNum,
+            ': ',
+            grade,
+            '%'
+          );
+        })
       );
     }
   };
@@ -268,7 +280,7 @@ var Students = function Students() {
               average,
               '%'
             ),
-            expandedViewMode(index)
+            expandedViewMode(index, student.grades)
           )
         ),
         _react2.default.createElement(

@@ -32,11 +32,17 @@ const Students = () => {
     }
   }
 
-  const expandedViewMode = (index) => {
+  const expandedViewMode = (index, grades) => {
     if (expandedView[index]) {
       return (
         <div>
-          Hellooooooo
+          <br/>
+          {grades.map((grade, index) => {
+            const testNum = index + 1;
+            return (
+              <div key={index}>Test {testNum}: {grade}%</div>
+            )
+          })}
         </div>
       )
     }
@@ -64,7 +70,7 @@ const Students = () => {
                   <div className="student-details">Company: {student.company}</div>
                   <div className="student-details">Skill: {student.skill}</div>
                   <div className="student-details">Average: {average}%</div>
-                  {expandedViewMode(index)}
+                  {expandedViewMode(index, student.grades)}
                 </div>
               </div>
 
