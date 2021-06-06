@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Tags from './Tags.jsx';
 
 const Students = () => {
   const [students, setStudents] = useState([]);
   const [nameInput, setNameInput] = useState('');
   const [searchTagInput, setSearchTagInput] = useState('');
-  const [addTagInput, setAddTagInput] = useState({});
-  const [tags, setTags] = useState({});
+  // const [addTagInput, setAddTagInput] = useState({});
+  // const [tags, setTags] = useState({});
   const [expandedView, setExpandedView] = useState({});
 
   useEffect(() => {
@@ -35,19 +36,19 @@ const Students = () => {
     }
   }
 
-  const handleKeyDown = (e) => {
-    const { key } = e;
-    if (key === 'Enter') {
-      e.preventDefault();
-      const indexTag = e.target.getAttribute("name");
-      if (!tags[indexTag]) {
-        setTags({...tags, [indexTag]: [addTagInput[indexTag]]});
-      } else {
-        setTags({...tags, [indexTag]: [...tags[indexTag], addTagInput[indexTag]]});
-      }
-      setAddTagInput('');
-    }
-  }
+  // const handleKeyDown = (e) => {
+  //   const { key } = e;
+  //   if (key === 'Enter') {
+  //     e.preventDefault();
+  //     const indexTag = e.target.getAttribute("name");
+  //     if (!tags[indexTag]) {
+  //       setTags({...tags, [indexTag]: [addTagInput[indexTag]]});
+  //     } else {
+  //       setTags({...tags, [indexTag]: [...tags[indexTag], addTagInput[indexTag]]});
+  //     }
+  //     setAddTagInput('');
+  //   }
+  // }
 
   const expandedViewMode = (index, grades) => {
     if (expandedView[index]) {
@@ -94,7 +95,8 @@ const Students = () => {
                   <div className="student-details">Skill: {student.skill}</div>
                   <div className="student-details">Average: {average}%</div>
                   {expandedViewMode(index, student.grades)}
-                  {tags[index]
+
+                  {/* {tags[index]
                   ? tags[index].map((tag, index) => {
                       return (
                         <div key={index}>{tag}</div>
@@ -109,7 +111,9 @@ const Students = () => {
                     name={index}
                     onChange={e => setAddTagInput({...addTagInput, [index]: e.target.value})}
                     onKeyDown={handleKeyDown}
-                  />
+                  /> */}
+                  <Tags index={index} />
+
                 </div>
               </div>
 
