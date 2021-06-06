@@ -191,14 +191,22 @@ var Students = function Students() {
   // }
 
   var handleExpandedView = function handleExpandedView(e) {
-    // console.log(e.target.getAttribute('name'));
     var index = e.target.getAttribute('name');
     if (!expandedView[index]) {
       setExpandedView(_extends({}, expandedView, _defineProperty({}, index, true)));
     } else {
       setExpandedView(_extends({}, expandedView, _defineProperty({}, index, !expandedView[index])));
     }
-    // setExpandedView(prevState => !prevState);
+  };
+
+  var expandedViewMode = function expandedViewMode(index) {
+    if (expandedView[index]) {
+      return _react2.default.createElement(
+        'div',
+        null,
+        'Hellooooooo'
+      );
+    }
   };
 
   return _react2.default.createElement(
@@ -259,7 +267,8 @@ var Students = function Students() {
               'Average: ',
               average,
               '%'
-            )
+            ),
+            expandedViewMode(index)
           )
         ),
         _react2.default.createElement(

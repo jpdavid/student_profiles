@@ -24,14 +24,22 @@ const Students = () => {
   // }
 
   const handleExpandedView = (e) => {
-    // console.log(e.target.getAttribute('name'));
     const index = e.target.getAttribute('name');
     if (!expandedView[index]) {
       setExpandedView({...expandedView, [index]: true});
     } else {
       setExpandedView({...expandedView, [index]: !expandedView[index]});
     }
-    // setExpandedView(prevState => !prevState);
+  }
+
+  const expandedViewMode = (index) => {
+    if (expandedView[index]) {
+      return (
+        <div>
+          Hellooooooo
+        </div>
+      )
+    }
   }
 
   return (
@@ -56,6 +64,7 @@ const Students = () => {
                   <div className="student-details">Company: {student.company}</div>
                   <div className="student-details">Skill: {student.skill}</div>
                   <div className="student-details">Average: {average}%</div>
+                  {expandedViewMode(index)}
                 </div>
               </div>
 
