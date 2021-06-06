@@ -155,8 +155,6 @@ var _axios2 = _interopRequireDefault(_axios);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var Students = function Students() {
@@ -180,7 +178,7 @@ var Students = function Students() {
       addTagInput = _useState8[0],
       setAddTagInput = _useState8[1];
 
-  var _useState9 = (0, _react.useState)([]),
+  var _useState9 = (0, _react.useState)({}),
       _useState10 = _slicedToArray(_useState9, 2),
       tags = _useState10[0],
       setTags = _useState10[1];
@@ -221,8 +219,10 @@ var Students = function Students() {
 
     if (key === 'Enter') {
       e.preventDefault();
-      setTags([].concat(_toConsumableArray(tags), [addTagInput]));
-      setAddTagInput('');
+      var index = e.target.getAttribute("name");
+      console.log(index);
+      // setTags({...tags, [index]: [...tags[index], addTagInput]});
+      // setAddTagInput('');
     }
   };
 
@@ -320,17 +320,11 @@ var Students = function Students() {
               '%'
             ),
             expandedViewMode(index, student.grades),
-            tags.map(function (tag, index) {
-              return _react2.default.createElement(
-                'div',
-                { key: index },
-                tag
-              );
-            }),
             _react2.default.createElement('input', {
               type: 'text',
               placeholder: 'Add a tag',
               value: addTagInput,
+              name: index,
               onChange: function onChange(e) {
                 return setAddTagInput(e.target.value);
               },

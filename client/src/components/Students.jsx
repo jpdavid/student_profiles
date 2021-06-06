@@ -6,7 +6,7 @@ const Students = () => {
   const [nameInput, setNameInput] = useState('');
   const [searchTagInput, setSearchTagInput] = useState('');
   const [addTagInput, setAddTagInput] = useState('');
-  const [tags, setTags] = useState([]);
+  const [tags, setTags] = useState({});
   const [expandedView, setExpandedView] = useState({});
 
   useEffect(() => {
@@ -39,8 +39,10 @@ const Students = () => {
     const { key } = e;
     if (key === 'Enter') {
       e.preventDefault();
-      setTags([...tags, addTagInput]);
-      setAddTagInput('');
+      const index = e.target.getAttribute("name");
+      console.log(index)
+      // setTags({...tags, [index]: [...tags[index], addTagInput]});
+      // setAddTagInput('');
     }
   }
 
@@ -89,15 +91,16 @@ const Students = () => {
                   <div className="student-details">Skill: {student.skill}</div>
                   <div className="student-details">Average: {average}%</div>
                   {expandedViewMode(index, student.grades)}
-                  {tags.map((tag, index) => {
+                  {/* {tags[index].map((tag, index) => {
                     return (
                       <div key={index}>{tag}</div>
                     )
-                  })}
+                  })} */}
                   <input
                     type="text"
                     placeholder="Add a tag"
                     value={addTagInput}
+                    name={index}
                     onChange={e => setAddTagInput(e.target.value)}
                     onKeyDown={handleKeyDown}
                   />
