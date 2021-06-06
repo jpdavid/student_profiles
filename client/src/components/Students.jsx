@@ -4,6 +4,7 @@ import axios from 'axios';
 const Students = () => {
   const [students, setStudents] = useState([]);
   const [input, setInput] = useState('');
+  const [expandedView, setExpandedView] = useState({});
 
   useEffect(() => {
     axios.get('/api/students')
@@ -21,6 +22,17 @@ const Students = () => {
   //     display: auto;
   //   }`)
   // }
+
+  const handleExpandedView = (e) => {
+    // console.log(e.target.getAttribute('name'));
+    const index = e.target.getAttribute('name');
+    if (!expandedView[index]) {
+      setExpandedView({...expandedView, [index]: true});
+    } else {
+      setExpandedView({...expandedView, [index]: !expandedView[index]});
+    }
+    // setExpandedView(prevState => !prevState);
+  }
 
   return (
     <div id="students-container">
@@ -47,7 +59,13 @@ const Students = () => {
                 </div>
               </div>
 
-              <button><i className="fas fa-plus"/></button>
+              <button
+                type="button"
+                name={index}
+                onClick={handleExpandedView}
+              >
+                <i className="fas fa-plus" name={index}/>
+              </button>
             </div>
           )
         })
