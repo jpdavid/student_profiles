@@ -83,8 +83,8 @@ const Students = () => {
                   ? <i className="fas fa-plus" name={index}/>
                   : <i className="fas fa-minus" name={index}/>
                 }
-
               </button>
+
             </div>
           )
         })
