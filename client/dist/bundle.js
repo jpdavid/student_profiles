@@ -290,7 +290,7 @@ var Students = function Students() {
             name: index,
             onClick: handleExpandedView
           },
-          _react2.default.createElement('i', { className: 'fas fa-plus', name: index })
+          !expandedView[index] ? _react2.default.createElement('i', { className: 'fas fa-plus', name: index }) : _react2.default.createElement('i', { className: 'fas fa-minus', name: index })
         )
       );
     })
