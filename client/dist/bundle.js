@@ -155,6 +155,8 @@ var _axios2 = _interopRequireDefault(_axios);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var Students = function Students() {
@@ -170,13 +172,23 @@ var Students = function Students() {
 
   var _useState5 = (0, _react.useState)(''),
       _useState6 = _slicedToArray(_useState5, 2),
-      tageInput = _useState6[0],
-      setTagInput = _useState6[1];
+      searchTagInput = _useState6[0],
+      setSearchTagInput = _useState6[1];
 
-  var _useState7 = (0, _react.useState)({}),
+  var _useState7 = (0, _react.useState)(''),
       _useState8 = _slicedToArray(_useState7, 2),
-      expandedView = _useState8[0],
-      setExpandedView = _useState8[1];
+      addTagInput = _useState8[0],
+      setAddTagInput = _useState8[1];
+
+  var _useState9 = (0, _react.useState)([]),
+      _useState10 = _slicedToArray(_useState9, 2),
+      tags = _useState10[0],
+      setTags = _useState10[1];
+
+  var _useState11 = (0, _react.useState)({}),
+      _useState12 = _slicedToArray(_useState11, 2),
+      expandedView = _useState12[0],
+      setExpandedView = _useState12[1];
 
   (0, _react.useEffect)(function () {
     _axios2.default.get('/api/students').then(function (results) {
@@ -201,6 +213,16 @@ var Students = function Students() {
       setExpandedView(_extends({}, expandedView, _defineProperty({}, index, true)));
     } else {
       setExpandedView(_extends({}, expandedView, _defineProperty({}, index, !expandedView[index])));
+    }
+  };
+
+  var handleKeyDown = function handleKeyDown(e) {
+    var key = e.key;
+
+    if (key === 'Enter') {
+      e.preventDefault();
+      setTags([].concat(_toConsumableArray(tags), [addTagInput]));
+      setAddTagInput('');
     }
   };
 
@@ -239,6 +261,14 @@ var Students = function Students() {
       value: nameInput,
       onChange: function onChange(e) {
         return setNameInput(e.target.value);
+      }
+    }),
+    _react2.default.createElement('input', {
+      type: 'text',
+      placeholder: 'Search by tag',
+      value: searchTagInput,
+      onChange: function onChange(e) {
+        return setSearchTagInput(e.target.value);
       }
     }),
     students.filter(function (student) {
@@ -289,7 +319,23 @@ var Students = function Students() {
               average,
               '%'
             ),
-            expandedViewMode(index, student.grades)
+            expandedViewMode(index, student.grades),
+            tags.map(function (tag, index) {
+              return _react2.default.createElement(
+                'div',
+                { key: index },
+                tag
+              );
+            }),
+            _react2.default.createElement('input', {
+              type: 'text',
+              placeholder: 'Add a tag',
+              value: addTagInput,
+              onChange: function onChange(e) {
+                return setAddTagInput(e.target.value);
+              },
+              onKeyDown: handleKeyDown
+            })
           )
         ),
         _react2.default.createElement(
