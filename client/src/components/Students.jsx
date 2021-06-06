@@ -24,7 +24,7 @@ const Students = () => {
   // }
 
   const handleExpandedView = (e) => {
-    const index = e.target.getAttribute('name');
+    const index = e.target.getAttribute("name");
     if (!expandedView[index]) {
       setExpandedView({...expandedView, [index]: true});
     } else {
@@ -40,7 +40,7 @@ const Students = () => {
           {grades.map((grade, index) => {
             const testNum = index + 1;
             return (
-              <div key={index}>Test {testNum}: {grade}%</div>
+              <div key={index}>Test {testNum}: <span style={{marginLeft:"25px"}}>{grade}%</span></div>
             )
           })}
         </div>

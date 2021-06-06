@@ -191,7 +191,7 @@ var Students = function Students() {
   // }
 
   var handleExpandedView = function handleExpandedView(e) {
-    var index = e.target.getAttribute('name');
+    var index = e.target.getAttribute("name");
     if (!expandedView[index]) {
       setExpandedView(_extends({}, expandedView, _defineProperty({}, index, true)));
     } else {
@@ -213,8 +213,12 @@ var Students = function Students() {
             'Test ',
             testNum,
             ': ',
-            grade,
-            '%'
+            _react2.default.createElement(
+              'span',
+              { style: { marginLeft: "25px" } },
+              grade,
+              '%'
+            )
           );
         })
       );
