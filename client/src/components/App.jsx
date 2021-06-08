@@ -1,8 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React from 'react';
 import Students from './Students';
 
 const App = () => {
+  const handleScroll = (e) => {
+    if (e.target.classList.contains("on-scrollbar") === false) {
+      e.target.classList.add("on-scrollbar");
+    }
+  }
+
+  window.addEventListener('scroll', handleScroll, true);
 
   return (
     <div id="wrapper">

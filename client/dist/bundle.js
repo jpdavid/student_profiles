@@ -104,10 +104,6 @@ var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
 
-var _axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-
-var _axios2 = _interopRequireDefault(_axios);
-
 var _Students = __webpack_require__(/*! ./Students */ "./client/src/components/Students.jsx");
 
 var _Students2 = _interopRequireDefault(_Students);
@@ -115,6 +111,13 @@ var _Students2 = _interopRequireDefault(_Students);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var App = function App() {
+  var handleScroll = function handleScroll(e) {
+    if (e.target.classList.contains("on-scrollbar") === false) {
+      e.target.classList.add("on-scrollbar");
+    }
+  };
+
+  window.addEventListener('scroll', handleScroll, true);
 
   return _react2.default.createElement(
     'div',
@@ -201,14 +204,6 @@ var Students = function Students() {
     });
   }, []);
 
-  // const handleScroll = () => {
-  //   console.log("Scrolling!");
-  //   let studentsContainerStyles = document.getElementById("students-container").style;
-  //   studentsContainerStyles.insertRule(`::-webkit-scrollbar {
-  //     display: auto;
-  //   }`)
-  // }
-
   var handleExpandedView = function handleExpandedView(e) {
     var index = e.target.getAttribute("name");
     if (!expandedView[index]) {
@@ -244,15 +239,9 @@ var Students = function Students() {
     }
   };
 
-  var findTags = function findTags(id) {
-    if (tags[id] && tags[id].includes(searchTagInput)) {
-      return id;
-    }
-  };
-
   return _react2.default.createElement(
     'div',
-    { id: 'students-container' },
+    { id: 'students-wrapper' },
     _react2.default.createElement('input', {
       type: 'text',
       placeholder: 'Search by name',
@@ -269,84 +258,81 @@ var Students = function Students() {
         return setSearchTagInput(e.target.value);
       }
     }),
-    students.filter(function (student) {
-      // let studentIndex = Number(student.id) - 1;
-      // console.log(student.firstName, studentIndex, tags[studentIndex])
-      // if (searchTagInput && student.id === JSON.stringify(studentIndex + 1) && tags[studentIndex] && (tags[studentIndex].includes(searchTagInput) || searchTagInput === '')) {
-      //   return (
-      //     (student.firstName.toLowerCase().includes(nameInput.toLowerCase()) || student.lastName.toLowerCase().includes(nameInput.toLowerCase()) || nameInput === '')
-      //   )
-      // }
-      return student.firstName.toLowerCase().includes(nameInput.toLowerCase()) || student.lastName.toLowerCase().includes(nameInput.toLowerCase()) || nameInput === '';
-    }).filter(function (filteredStudents) {
-      return tags[filteredStudents.id] && tags[filteredStudents.id].join(',').includes(searchTagInput) > 0 || searchTagInput === '';
-    }).map(function (student, index) {
-      var average = student.grades.reduce(function (a, b) {
-        return Number(a) + Number(b);
-      }) / student.grades.length;
-      return _react2.default.createElement(
-        'div',
-        { className: 'student', key: index },
-        _react2.default.createElement('img', { src: student.pic, className: 'student-pic' }),
-        _react2.default.createElement(
+    _react2.default.createElement(
+      'div',
+      { id: 'students-container' },
+      students.filter(function (student) {
+        return student.firstName.toLowerCase().includes(nameInput.toLowerCase()) || student.lastName.toLowerCase().includes(nameInput.toLowerCase()) || nameInput === '';
+      }).filter(function (filteredStudents) {
+        return tags[filteredStudents.id] && tags[filteredStudents.id].join(',').includes(searchTagInput) > 0 || searchTagInput === '';
+      }).map(function (student, index) {
+        var average = student.grades.reduce(function (a, b) {
+          return Number(a) + Number(b);
+        }) / student.grades.length;
+        return _react2.default.createElement(
           'div',
-          { className: 'student-info' },
+          { className: 'student', key: index },
+          _react2.default.createElement('img', { src: student.pic, className: 'student-pic' }),
           _react2.default.createElement(
             'div',
-            { className: 'student-name' },
-            student.firstName,
-            ' ',
-            student.lastName
+            { className: 'student-info' },
+            _react2.default.createElement(
+              'div',
+              { className: 'student-name' },
+              student.firstName,
+              ' ',
+              student.lastName
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'student-details-container' },
+              _react2.default.createElement(
+                'div',
+                { className: 'student-details' },
+                'Email: ',
+                student.email
+              ),
+              _react2.default.createElement(
+                'div',
+                { className: 'student-details' },
+                'Company: ',
+                student.company
+              ),
+              _react2.default.createElement(
+                'div',
+                { className: 'student-details' },
+                'Skill: ',
+                student.skill
+              ),
+              _react2.default.createElement(
+                'div',
+                { className: 'student-details' },
+                'Average: ',
+                average,
+                '%'
+              ),
+              expandedViewMode(index, student.grades),
+              _react2.default.createElement(_Tags2.default, {
+                id: Number(student.id),
+                tags: tags,
+                setTags: setTags,
+                addTagInput: addTagInput,
+                setAddTagInput: setAddTagInput
+              })
+            )
           ),
           _react2.default.createElement(
-            'div',
-            { className: 'student-details-container' },
-            _react2.default.createElement(
-              'div',
-              { className: 'student-details' },
-              'Email: ',
-              student.email
-            ),
-            _react2.default.createElement(
-              'div',
-              { className: 'student-details' },
-              'Company: ',
-              student.company
-            ),
-            _react2.default.createElement(
-              'div',
-              { className: 'student-details' },
-              'Skill: ',
-              student.skill
-            ),
-            _react2.default.createElement(
-              'div',
-              { className: 'student-details' },
-              'Average: ',
-              average,
-              '%'
-            ),
-            expandedViewMode(index, student.grades),
-            _react2.default.createElement(_Tags2.default, {
-              id: Number(student.id),
-              tags: tags,
-              setTags: setTags,
-              addTagInput: addTagInput,
-              setAddTagInput: setAddTagInput
-            })
+            'button',
+            {
+              type: 'button',
+              name: index,
+              onClick: handleExpandedView
+            },
+            !expandedView[index] ? _react2.default.createElement('i', { className: 'fas fa-plus', name: index }) : _react2.default.createElement('i', { className: 'fas fa-minus', name: index })
           )
-        ),
-        _react2.default.createElement(
-          'button',
-          {
-            type: 'button',
-            name: index,
-            onClick: handleExpandedView
-          },
-          !expandedView[index] ? _react2.default.createElement('i', { className: 'fas fa-plus', name: index }) : _react2.default.createElement('i', { className: 'fas fa-minus', name: index })
-        )
-      );
-    })
+        );
+      })
+    )
   );
 };
 

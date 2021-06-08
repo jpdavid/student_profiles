@@ -19,14 +19,6 @@ const Students = () => {
       .catch(err => console.log(err));
   }, []);
 
-  // const handleScroll = () => {
-  //   console.log("Scrolling!");
-  //   let studentsContainerStyles = document.getElementById("students-container").style;
-  //   studentsContainerStyles.insertRule(`::-webkit-scrollbar {
-  //     display: auto;
-  //   }`)
-  // }
-
   const handleExpandedView = (e) => {
     const index = e.target.getAttribute("name");
     if (!expandedView[index]) {
@@ -52,14 +44,8 @@ const Students = () => {
     }
   }
 
-  const findTags = (id) => {
-    if (tags[id] && tags[id].includes(searchTagInput)) {
-      return id;
-    }
-  }
-
   return (
-    <div id="students-container">
+    <div id="students-wrapper">
       <input
         type="text"
         placeholder="Search by name"
@@ -72,63 +58,57 @@ const Students = () => {
         value={searchTagInput}
         onChange={e => setSearchTagInput(e.target.value)}
       />
-      {students.filter(student => {
-        // let studentIndex = Number(student.id) - 1;
-        // console.log(student.firstName, studentIndex, tags[studentIndex])
-        // if (searchTagInput && student.id === JSON.stringify(studentIndex + 1) && tags[studentIndex] && (tags[studentIndex].includes(searchTagInput) || searchTagInput === '')) {
-        //   return (
-        //     (student.firstName.toLowerCase().includes(nameInput.toLowerCase()) || student.lastName.toLowerCase().includes(nameInput.toLowerCase()) || nameInput === '')
-        //   )
-        // }
-        return (
-          (student.firstName.toLowerCase().includes(nameInput.toLowerCase()) || student.lastName.toLowerCase().includes(nameInput.toLowerCase()) || nameInput === '')
-        )
-      }).filter(filteredStudents => {
-        return (
-          (tags[filteredStudents.id] && tags[filteredStudents.id].join(',').includes(searchTagInput) > 0) || searchTagInput === ''
-        )
-      })
-        .map((student, index) => {
-          let average = student.grades.reduce((a, b) => Number(a) + Number(b)) / student.grades.length;
+      <div id="students-container">
+        {students.filter(student => {
           return (
-            <div className="student" key={index}>
-              <img src={student.pic} className="student-pic"></img>
-
-              <div className="student-info">
-                <div className="student-name">{student.firstName} {student.lastName}</div>
-                <div className="student-details-container">
-                  <div className="student-details">Email: {student.email}</div>
-                  <div className="student-details">Company: {student.company}</div>
-                  <div className="student-details">Skill: {student.skill}</div>
-                  <div className="student-details">Average: {average}%</div>
-                  {expandedViewMode(index, student.grades)}
-
-                  <Tags
-                    id={Number(student.id)}
-                    tags={tags}
-                    setTags={setTags}
-                    addTagInput={addTagInput}
-                    setAddTagInput={setAddTagInput}
-                  />
-
-                </div>
-              </div>
-
-              <button
-                type="button"
-                name={index}
-                onClick={handleExpandedView}
-              >
-                {!expandedView[index]
-                  ? <i className="fas fa-plus" name={index}/>
-                  : <i className="fas fa-minus" name={index}/>
-                }
-              </button>
-
-            </div>
+            (student.firstName.toLowerCase().includes(nameInput.toLowerCase()) || student.lastName.toLowerCase().includes(nameInput.toLowerCase()) || nameInput === '')
           )
         })
-      }
+          .filter(filteredStudents => {
+            return (
+              (tags[filteredStudents.id] && tags[filteredStudents.id].join(',').includes(searchTagInput) > 0) || searchTagInput === ''
+            )
+          })
+          .map((student, index) => {
+            let average = student.grades.reduce((a, b) => Number(a) + Number(b)) / student.grades.length;
+            return (
+              <div className="student" key={index}>
+                <img src={student.pic} className="student-pic"></img>
+
+                <div className="student-info">
+                  <div className="student-name">{student.firstName} {student.lastName}</div>
+                  <div className="student-details-container">
+                    <div className="student-details">Email: {student.email}</div>
+                    <div className="student-details">Company: {student.company}</div>
+                    <div className="student-details">Skill: {student.skill}</div>
+                    <div className="student-details">Average: {average}%</div>
+                    {expandedViewMode(index, student.grades)}
+
+                    <Tags
+                      id={Number(student.id)}
+                      tags={tags}
+                      setTags={setTags}
+                      addTagInput={addTagInput}
+                      setAddTagInput={setAddTagInput}
+                    />
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  name={index}
+                  onClick={handleExpandedView}
+                >
+                  {!expandedView[index]
+                    ? <i className="fas fa-plus" name={index}/>
+                    : <i className="fas fa-minus" name={index}/>
+                  }
+                </button>
+              </div>
+            )
+          })
+        }
+
+      </div>
     </div>
   )
 }
