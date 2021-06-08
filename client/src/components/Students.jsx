@@ -66,7 +66,18 @@ const Students = () => {
         value={searchTagInput}
         onChange={e => setSearchTagInput(e.target.value)}
       />
-      {students.filter(student => (student.firstName.toLowerCase().includes(nameInput.toLowerCase()) ||student.lastName.toLowerCase().includes(nameInput.toLowerCase()) || nameInput === ''))
+      {students.filter(student => {
+        // let studentIndex = Number(student.id) - 1;
+        // console.log(student.firstName, studentIndex, tags[studentIndex])
+        // if (searchTagInput && student.id === JSON.stringify(studentIndex + 1) && tags[studentIndex] && (tags[studentIndex].includes(searchTagInput) || searchTagInput === '')) {
+        //   return (
+        //     (student.firstName.toLowerCase().includes(nameInput.toLowerCase()) || student.lastName.toLowerCase().includes(nameInput.toLowerCase()) || nameInput === '')
+        //   )
+        // }
+        return (
+          (student.firstName.toLowerCase().includes(nameInput.toLowerCase()) || student.lastName.toLowerCase().includes(nameInput.toLowerCase()) || nameInput === '')
+        )
+      })
         .map((student, index) => {
           let average = student.grades.reduce((a, b) => Number(a) + Number(b)) / student.grades.length;
           return (
@@ -83,7 +94,7 @@ const Students = () => {
                   {expandedViewMode(index, student.grades)}
 
                   <Tags
-                    index={index}
+                    id={Number(student.id)}
                     tags={tags}
                     setTags={setTags}
                     addTagInput={addTagInput}

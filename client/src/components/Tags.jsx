@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const Tags = ({ index, tags, setTags, addTagInput, setAddTagInput }) => {
+const Tags = ({ id, tags, setTags, addTagInput, setAddTagInput }) => {
   // const [addTagInput, setAddTagInput] = useState({});
   // const [tags, setTags] = useState({});
 
@@ -20,8 +20,8 @@ const Tags = ({ index, tags, setTags, addTagInput, setAddTagInput }) => {
   return (
     <div>
       <div id="tag-container">
-        {tags[index]
-          ? tags[index].map((tag, index) => {
+        {tags[id]
+          ? tags[id].map((tag, index) => {
               return (
                 <div className="tags" key={index}>{tag}</div>
               )
@@ -33,9 +33,9 @@ const Tags = ({ index, tags, setTags, addTagInput, setAddTagInput }) => {
         type="text"
         className="tag-input"
         placeholder="Add a tag"
-        value={addTagInput[index] || ''}
-        name={index}
-        onChange={e => setAddTagInput({...addTagInput, [index]: e.target.value})}
+        value={addTagInput[id] || ''}
+        name={id}
+        onChange={e => setAddTagInput({...addTagInput, [id]: e.target.value})}
         onKeyDown={handleKeyDown}
       />
     </div>

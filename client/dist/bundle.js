@@ -264,6 +264,13 @@ var Students = function Students() {
       }
     }),
     students.filter(function (student) {
+      // let studentIndex = Number(student.id) - 1;
+      // console.log(student.firstName, studentIndex, tags[studentIndex])
+      // if (searchTagInput && student.id === JSON.stringify(studentIndex + 1) && tags[studentIndex] && (tags[studentIndex].includes(searchTagInput) || searchTagInput === '')) {
+      //   return (
+      //     (student.firstName.toLowerCase().includes(nameInput.toLowerCase()) || student.lastName.toLowerCase().includes(nameInput.toLowerCase()) || nameInput === '')
+      //   )
+      // }
       return student.firstName.toLowerCase().includes(nameInput.toLowerCase()) || student.lastName.toLowerCase().includes(nameInput.toLowerCase()) || nameInput === '';
     }).map(function (student, index) {
       var average = student.grades.reduce(function (a, b) {
@@ -313,7 +320,7 @@ var Students = function Students() {
             ),
             expandedViewMode(index, student.grades),
             _react2.default.createElement(_Tags2.default, {
-              index: index,
+              id: Number(student.id),
               tags: tags,
               setTags: setTags,
               addTagInput: addTagInput,
@@ -366,7 +373,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var Tags = function Tags(_ref) {
-  var index = _ref.index,
+  var id = _ref.id,
       tags = _ref.tags,
       setTags = _ref.setTags,
       addTagInput = _ref.addTagInput,
@@ -395,7 +402,7 @@ var Tags = function Tags(_ref) {
     _react2.default.createElement(
       'div',
       { id: 'tag-container' },
-      tags[index] ? tags[index].map(function (tag, index) {
+      tags[id] ? tags[id].map(function (tag, index) {
         return _react2.default.createElement(
           'div',
           { className: 'tags', key: index },
@@ -407,10 +414,10 @@ var Tags = function Tags(_ref) {
       type: 'text',
       className: 'tag-input',
       placeholder: 'Add a tag',
-      value: addTagInput[index] || '',
-      name: index,
+      value: addTagInput[id] || '',
+      name: id,
       onChange: function onChange(e) {
-        return setAddTagInput(_extends({}, addTagInput, _defineProperty({}, index, e.target.value)));
+        return setAddTagInput(_extends({}, addTagInput, _defineProperty({}, id, e.target.value)));
       },
       onKeyDown: handleKeyDown
     })
