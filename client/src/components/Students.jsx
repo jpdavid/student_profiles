@@ -39,12 +39,12 @@ const Students = () => {
   const expandedViewMode = (index, grades) => {
     if (expandedView[index]) {
       return (
-        <div>
+        <div className="grades">
           <br/>
           {grades.map((grade, index) => {
             const testNum = index + 1;
             return (
-              <div key={index}>Test {testNum}: <span style={{marginLeft:"25px", marginBottom:"10px"}}>{grade}%</span></div>
+              <div key={index}>Test {testNum}: <span style={{marginLeft:"25px"}}>{grade}%</span></div>
             )
           })}
         </div>

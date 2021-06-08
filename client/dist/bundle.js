@@ -215,7 +215,7 @@ var Students = function Students() {
     if (expandedView[index]) {
       return _react2.default.createElement(
         'div',
-        null,
+        { className: 'grades' },
         _react2.default.createElement('br', null),
         grades.map(function (grade, index) {
           var testNum = index + 1;
@@ -227,7 +227,7 @@ var Students = function Students() {
             ': ',
             _react2.default.createElement(
               'span',
-              { style: { marginLeft: "25px", marginBottom: "10px" } },
+              { style: { marginLeft: "25px" } },
               grade,
               '%'
             )
