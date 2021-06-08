@@ -107,8 +107,11 @@ button:hover {
 
 #tag-container {
   display: flex;
+  margin-top: 5px;
 }
 
 .tags {
-  border: 1px solid black;
+  border-radius: 4px;
+  background-color: rgb(228, 228, 228);
+  padding: 6px;
 }
