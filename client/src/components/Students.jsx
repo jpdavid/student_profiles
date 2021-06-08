@@ -85,7 +85,7 @@ const Students = () => {
         )
       }).filter(filteredStudents => {
         return (
-          (tags[filteredStudents.id] && tags[filteredStudents.id].includes(searchTagInput)) || searchTagInput === ''
+          (tags[filteredStudents.id] && tags[filteredStudents.id].join(',').includes(searchTagInput) > 0) || searchTagInput === ''
         )
       })
         .map((student, index) => {

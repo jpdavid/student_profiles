@@ -279,7 +279,7 @@ var Students = function Students() {
       // }
       return student.firstName.toLowerCase().includes(nameInput.toLowerCase()) || student.lastName.toLowerCase().includes(nameInput.toLowerCase()) || nameInput === '';
     }).filter(function (filteredStudents) {
-      return tags[filteredStudents.id] && tags[filteredStudents.id].includes(searchTagInput) || searchTagInput === '';
+      return tags[filteredStudents.id] && tags[filteredStudents.id].join(',').includes(searchTagInput) > 0 || searchTagInput === '';
     }).map(function (student, index) {
       var average = student.grades.reduce(function (a, b) {
         return Number(a) + Number(b);
