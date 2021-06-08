@@ -6,8 +6,8 @@ const Students = () => {
   const [students, setStudents] = useState([]);
   const [nameInput, setNameInput] = useState('');
   const [searchTagInput, setSearchTagInput] = useState('');
-  // const [addTagInput, setAddTagInput] = useState({});
-  // const [tags, setTags] = useState({});
+  const [addTagInput, setAddTagInput] = useState({});
+  const [tags, setTags] = useState({});
   const [expandedView, setExpandedView] = useState({});
 
   useEffect(() => {
@@ -66,7 +66,7 @@ const Students = () => {
         value={searchTagInput}
         onChange={e => setSearchTagInput(e.target.value)}
       />
-      {students.filter(student => student.firstName.toLowerCase().includes(nameInput.toLowerCase()) ||student.lastName.toLowerCase().includes(nameInput.toLowerCase()) || nameInput === '')
+      {students.filter(student => (student.firstName.toLowerCase().includes(nameInput.toLowerCase()) ||student.lastName.toLowerCase().includes(nameInput.toLowerCase()) || nameInput === ''))
         .map((student, index) => {
           let average = student.grades.reduce((a, b) => Number(a) + Number(b)) / student.grades.length;
           return (
@@ -82,7 +82,13 @@ const Students = () => {
                   <div className="student-details">Average: {average}%</div>
                   {expandedViewMode(index, student.grades)}
 
-                  <Tags index={index}/>
+                  <Tags
+                    index={index}
+                    tags={tags}
+                    setTags={setTags}
+                    addTagInput={addTagInput}
+                    setAddTagInput={setAddTagInput}
+                  />
 
                 </div>
               </div>

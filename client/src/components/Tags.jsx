@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 
-const Tags = ({ index }) => {
-  const [addTagInput, setAddTagInput] = useState({});
-  const [tags, setTags] = useState({});
+const Tags = ({ index, tags, setTags, addTagInput, setAddTagInput }) => {
+  // const [addTagInput, setAddTagInput] = useState({});
+  // const [tags, setTags] = useState({});
 
   const handleKeyDown = (e) => {
     const { key } = e;

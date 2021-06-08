@@ -176,14 +176,21 @@ var Students = function Students() {
       _useState6 = _slicedToArray(_useState5, 2),
       searchTagInput = _useState6[0],
       setSearchTagInput = _useState6[1];
-  // const [addTagInput, setAddTagInput] = useState({});
-  // const [tags, setTags] = useState({});
-
 
   var _useState7 = (0, _react.useState)({}),
       _useState8 = _slicedToArray(_useState7, 2),
-      expandedView = _useState8[0],
-      setExpandedView = _useState8[1];
+      addTagInput = _useState8[0],
+      setAddTagInput = _useState8[1];
+
+  var _useState9 = (0, _react.useState)({}),
+      _useState10 = _slicedToArray(_useState9, 2),
+      tags = _useState10[0],
+      setTags = _useState10[1];
+
+  var _useState11 = (0, _react.useState)({}),
+      _useState12 = _slicedToArray(_useState11, 2),
+      expandedView = _useState12[0],
+      setExpandedView = _useState12[1];
 
   (0, _react.useEffect)(function () {
     _axios2.default.get('/api/students').then(function (results) {
@@ -305,7 +312,13 @@ var Students = function Students() {
               '%'
             ),
             expandedViewMode(index, student.grades),
-            _react2.default.createElement(_Tags2.default, { index: index })
+            _react2.default.createElement(_Tags2.default, {
+              index: index,
+              tags: tags,
+              setTags: setTags,
+              addTagInput: addTagInput,
+              setAddTagInput: setAddTagInput
+            })
           )
         ),
         _react2.default.createElement(
@@ -342,8 +355,6 @@ Object.defineProperty(exports, "__esModule", {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
-
 var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
@@ -355,17 +366,14 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var Tags = function Tags(_ref) {
-  var index = _ref.index;
+  var index = _ref.index,
+      tags = _ref.tags,
+      setTags = _ref.setTags,
+      addTagInput = _ref.addTagInput,
+      setAddTagInput = _ref.setAddTagInput;
 
-  var _useState = (0, _react.useState)({}),
-      _useState2 = _slicedToArray(_useState, 2),
-      addTagInput = _useState2[0],
-      setAddTagInput = _useState2[1];
-
-  var _useState3 = (0, _react.useState)({}),
-      _useState4 = _slicedToArray(_useState3, 2),
-      tags = _useState4[0],
-      setTags = _useState4[1];
+  // const [addTagInput, setAddTagInput] = useState({});
+  // const [tags, setTags] = useState({});
 
   var handleKeyDown = function handleKeyDown(e) {
     var key = e.key;
