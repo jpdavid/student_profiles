@@ -244,6 +244,12 @@ var Students = function Students() {
     }
   };
 
+  var findTags = function findTags(id) {
+    if (tags[id] && tags[id].includes(searchTagInput)) {
+      return id;
+    }
+  };
+
   return _react2.default.createElement(
     'div',
     { id: 'students-container' },
@@ -272,6 +278,8 @@ var Students = function Students() {
       //   )
       // }
       return student.firstName.toLowerCase().includes(nameInput.toLowerCase()) || student.lastName.toLowerCase().includes(nameInput.toLowerCase()) || nameInput === '';
+    }).filter(function (filteredStudents) {
+      return tags[filteredStudents.id] && tags[filteredStudents.id].includes(searchTagInput) || searchTagInput === '';
     }).map(function (student, index) {
       var average = student.grades.reduce(function (a, b) {
         return Number(a) + Number(b);

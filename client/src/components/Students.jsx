@@ -52,6 +52,12 @@ const Students = () => {
     }
   }
 
+  const findTags = (id) => {
+    if (tags[id] && tags[id].includes(searchTagInput)) {
+      return id;
+    }
+  }
+
   return (
     <div id="students-container">
       <input
@@ -76,6 +82,10 @@ const Students = () => {
         // }
         return (
           (student.firstName.toLowerCase().includes(nameInput.toLowerCase()) || student.lastName.toLowerCase().includes(nameInput.toLowerCase()) || nameInput === '')
+        )
+      }).filter(filteredStudents => {
+        return (
+          (tags[filteredStudents.id] && tags[filteredStudents.id].includes(searchTagInput)) || searchTagInput === ''
         )
       })
         .map((student, index) => {
