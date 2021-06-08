@@ -114,6 +114,10 @@ var App = function App() {
   var handleScroll = function handleScroll(e) {
     if (e.target.classList.contains("on-scrollbar") === false) {
       e.target.classList.add("on-scrollbar");
+    } else {
+      setTimeout(function () {
+        return e.target.classList.remove("on-scrollbar");
+      }, 1500);
     }
   };
 

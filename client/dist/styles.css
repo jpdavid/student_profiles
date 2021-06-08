@@ -27,7 +27,7 @@ div::-webkit-scrollbar-track {
   background-color: transparent;
 }
 div::-webkit-scrollbar {
-  width: 3px !important;
+  width: 5px !important;
   background-color: transparent;
 }
 div::-webkit-scrollbar-thumb {
@@ -44,12 +44,13 @@ div::-webkit-scrollbar-thumb {
 }
 
 .on-scrollbar::-webkit-scrollbar {
-  width: 6px !important;
+  width: 5px !important;
   background-color: transparent;
 }
 
 .on-scrollbar::-webkit-scrollbar-thumb {
   background-color: #acacac;
+  border-radius: 5px;
 }
 
 .student {
