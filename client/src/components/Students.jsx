@@ -36,20 +36,6 @@ const Students = () => {
     }
   }
 
-  // const handleKeyDown = (e) => {
-  //   const { key } = e;
-  //   if (key === 'Enter') {
-  //     e.preventDefault();
-  //     const indexTag = e.target.getAttribute("name");
-  //     if (!tags[indexTag]) {
-  //       setTags({...tags, [indexTag]: [addTagInput[indexTag]]});
-  //     } else {
-  //       setTags({...tags, [indexTag]: [...tags[indexTag], addTagInput[indexTag]]});
-  //     }
-  //     setAddTagInput('');
-  //   }
-  // }
-
   const expandedViewMode = (index, grades) => {
     if (expandedView[index]) {
       return (
@@ -58,7 +44,7 @@ const Students = () => {
           {grades.map((grade, index) => {
             const testNum = index + 1;
             return (
-              <div key={index}>Test {testNum}: <span style={{marginLeft:"25px"}}>{grade}%</span></div>
+              <div key={index}>Test {testNum}: <span style={{marginLeft:"25px", marginBottom:"10px"}}>{grade}%</span></div>
             )
           })}
         </div>
@@ -96,22 +82,6 @@ const Students = () => {
                   <div className="student-details">Average: {average}%</div>
                   {expandedViewMode(index, student.grades)}
 
-                  {/* {tags[index]
-                  ? tags[index].map((tag, index) => {
-                      return (
-                        <div key={index}>{tag}</div>
-                      )
-                    })
-                  : null
-                  }
-                  <input
-                    type="text"
-                    placeholder="Add a tag"
-                    value={addTagInput[index] || ''}
-                    name={index}
-                    onChange={e => setAddTagInput({...addTagInput, [index]: e.target.value})}
-                    onKeyDown={handleKeyDown}
-                  /> */}
                   <Tags index={index}/>
 
                 </div>

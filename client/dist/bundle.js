@@ -211,20 +211,6 @@ var Students = function Students() {
     }
   };
 
-  // const handleKeyDown = (e) => {
-  //   const { key } = e;
-  //   if (key === 'Enter') {
-  //     e.preventDefault();
-  //     const indexTag = e.target.getAttribute("name");
-  //     if (!tags[indexTag]) {
-  //       setTags({...tags, [indexTag]: [addTagInput[indexTag]]});
-  //     } else {
-  //       setTags({...tags, [indexTag]: [...tags[indexTag], addTagInput[indexTag]]});
-  //     }
-  //     setAddTagInput('');
-  //   }
-  // }
-
   var expandedViewMode = function expandedViewMode(index, grades) {
     if (expandedView[index]) {
       return _react2.default.createElement(
@@ -241,7 +227,7 @@ var Students = function Students() {
             ': ',
             _react2.default.createElement(
               'span',
-              { style: { marginLeft: "25px" } },
+              { style: { marginLeft: "25px", marginBottom: "10px" } },
               grade,
               '%'
             )
@@ -411,6 +397,7 @@ var Tags = function Tags(_ref) {
     ),
     _react2.default.createElement('input', {
       type: 'text',
+      className: 'tag-input',
       placeholder: 'Add a tag',
       value: addTagInput[index] || '',
       name: index,

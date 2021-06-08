@@ -108,10 +108,19 @@ button:hover {
 #tag-container {
   display: flex;
   margin-top: 5px;
+  margin-left: 2px;
 }
 
 .tags {
   border-radius: 4px;
   background-color: rgb(228, 228, 228);
-  padding: 6px;
+  padding: 10px 8px 10px 8px;
+  margin-right: 5px;
+}
+
+.tag-input {
+  margin-left: 0px;
+  padding-left: 4px;
+  padding-bottom: 12px;
+  font-size: 16px;
 }

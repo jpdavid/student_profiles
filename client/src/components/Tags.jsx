@@ -20,17 +20,18 @@ const Tags = ({ index }) => {
   return (
     <div>
       <div id="tag-container">
-      {tags[index]
-        ? tags[index].map((tag, index) => {
-            return (
-              <div className="tags" key={index}>{tag}</div>
-            )
-          })
-        : null
-      }
+        {tags[index]
+          ? tags[index].map((tag, index) => {
+              return (
+                <div className="tags" key={index}>{tag}</div>
+              )
+            })
+          : null
+        }
       </div>
       <input
         type="text"
+        className="tag-input"
         placeholder="Add a tag"
         value={addTagInput[index] || ''}
         name={index}
