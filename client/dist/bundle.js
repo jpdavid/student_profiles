@@ -398,13 +398,17 @@ var Tags = function Tags(_ref) {
   return _react2.default.createElement(
     'div',
     null,
-    tags[index] ? tags[index].map(function (tag, index) {
-      return _react2.default.createElement(
-        'div',
-        { key: index },
-        tag
-      );
-    }) : null,
+    _react2.default.createElement(
+      'div',
+      { id: 'tag-container' },
+      tags[index] ? tags[index].map(function (tag, index) {
+        return _react2.default.createElement(
+          'div',
+          { className: 'tags', key: index },
+          tag
+        );
+      }) : null
+    ),
     _react2.default.createElement('input', {
       type: 'text',
       placeholder: 'Add a tag',

@@ -19,14 +19,16 @@ const Tags = ({ index }) => {
   }
   return (
     <div>
+      <div id="tag-container">
       {tags[index]
         ? tags[index].map((tag, index) => {
             return (
-              <div key={index}>{tag}</div>
+              <div className="tags" key={index}>{tag}</div>
             )
           })
         : null
       }
+      </div>
       <input
         type="text"
         placeholder="Add a tag"
