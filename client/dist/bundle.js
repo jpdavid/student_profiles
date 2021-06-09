@@ -114,10 +114,9 @@ var App = function App() {
   var handleScroll = function handleScroll(e) {
     if (e.target.classList.contains("on-scrollbar") === false) {
       e.target.classList.add("on-scrollbar");
-    } else {
       setTimeout(function () {
         return e.target.classList.remove("on-scrollbar");
-      }, 1500);
+      }, 2000);
     }
   };
 
@@ -276,7 +275,7 @@ var Students = function Students() {
         return _react2.default.createElement(
           'div',
           { className: 'student', key: index },
-          _react2.default.createElement('img', { src: student.pic, className: 'student-pic' }),
+          _react2.default.createElement('img', { src: student.pic, alt: 'profile-photo', className: 'student-pic' }),
           _react2.default.createElement(
             'div',
             { className: 'student-info' },
@@ -377,9 +376,6 @@ var Tags = function Tags(_ref) {
       addTagInput = _ref.addTagInput,
       setAddTagInput = _ref.setAddTagInput;
 
-  // const [addTagInput, setAddTagInput] = useState({});
-  // const [tags, setTags] = useState({});
-
   var handleKeyDown = function handleKeyDown(e) {
     var key = e.key;
 
@@ -394,6 +390,7 @@ var Tags = function Tags(_ref) {
       setAddTagInput('');
     }
   };
+
   return _react2.default.createElement(
     'div',
     null,

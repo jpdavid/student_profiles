@@ -1,9 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 const Tags = ({ id, tags, setTags, addTagInput, setAddTagInput }) => {
-  // const [addTagInput, setAddTagInput] = useState({});
-  // const [tags, setTags] = useState({});
-
   const handleKeyDown = (e) => {
     const { key } = e;
     if (key === 'Enter') {
@@ -17,6 +14,7 @@ const Tags = ({ id, tags, setTags, addTagInput, setAddTagInput }) => {
       setAddTagInput('');
     }
   }
+
   return (
     <div>
       <div id="tag-container">

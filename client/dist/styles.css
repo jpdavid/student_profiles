@@ -3,10 +3,16 @@
 body {
   font-family: 'Raleway', sans-serif;
   background-color: rgb(241, 241, 241);
+  /* position: fixed; */
+}
+
+#app {
+  width: 900px;
+	margin: 0 auto;
 }
 
 #wrapper {
-  margin: 5% 20% 5% 20%;
+  margin: 5%;
   background-color: white;
   border-radius: 12px;
   box-shadow: 1px 3px 3px rgb(200, 200, 200);
@@ -15,19 +21,19 @@ body {
 #students-wrapper {
   display: flex;
   flex-direction: column;
-  height: 655px;
+  height: 85vh;
 }
 
 #students-container {
   overflow-y: scroll;
 }
-
+/* ----- SCROLLBAR ----- */
 div::-webkit-scrollbar-track {
   box-shadow: none !important;
   background-color: transparent;
 }
 div::-webkit-scrollbar {
-  width: 5px !important;
+  width: 7px !important;
   background-color: transparent;
 }
 div::-webkit-scrollbar-thumb {
@@ -37,21 +43,20 @@ div::-webkit-scrollbar-thumb {
 .on-scrollbar{
   -ms-overflow-style: none;
 }
-
 .on-scrollbar::-webkit-scrollbar-track {
   box-shadow: none !important;
   background-color: transparent !important;
 }
-
 .on-scrollbar::-webkit-scrollbar {
-  width: 5px !important;
+  width: 7px !important;
   background-color: transparent;
 }
-
 .on-scrollbar::-webkit-scrollbar-thumb {
   background-color: #acacac;
   border-radius: 5px;
+  background-clip: padding-box;
 }
+/* ---------- */
 
 .student {
   display: grid;
