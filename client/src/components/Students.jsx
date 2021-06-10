@@ -60,8 +60,9 @@ const Students = () => {
       />
       <div id="students-container">
         {students.filter(student => {
+          const fullName = `${student.firstName} ${student.lastName}`;
           return (
-            (student.firstName.toLowerCase().includes(nameInput.toLowerCase()) || student.lastName.toLowerCase().includes(nameInput.toLowerCase()) || nameInput === '')
+            (student.firstName.toLowerCase().includes(nameInput.toLowerCase()) || student.lastName.toLowerCase().includes(nameInput.toLowerCase()) || fullName.toLowerCase().includes(nameInput.toLowerCase()) || nameInput === '')
           )
         })
           .filter(filteredStudents => {

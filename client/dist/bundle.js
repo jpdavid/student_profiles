@@ -265,7 +265,8 @@ var Students = function Students() {
       'div',
       { id: 'students-container' },
       students.filter(function (student) {
-        return student.firstName.toLowerCase().includes(nameInput.toLowerCase()) || student.lastName.toLowerCase().includes(nameInput.toLowerCase()) || nameInput === '';
+        var fullName = student.firstName + ' ' + student.lastName;
+        return student.firstName.toLowerCase().includes(nameInput.toLowerCase()) || student.lastName.toLowerCase().includes(nameInput.toLowerCase()) || fullName.toLowerCase().includes(nameInput.toLowerCase()) || nameInput === '';
       }).filter(function (filteredStudents) {
         return tags[filteredStudents.id] && tags[filteredStudents.id].join(',').includes(searchTagInput) > 0 || searchTagInput === '';
       }).map(function (student, index) {
