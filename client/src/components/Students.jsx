@@ -14,7 +14,7 @@ const Students = () => {
     axios.get('/api/students')
       .then(results => {
         localStorage.setItem('students', JSON.stringify(results.data));
-        setStudents(JSON.parse(localStorage['students']));
+        setStudents(JSON.parse(localStorage.getItem('students')));
       })
       .catch(err => console.log(err));
   }, []);

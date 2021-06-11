@@ -202,7 +202,7 @@ var Students = function Students() {
   (0, _react.useEffect)(function () {
     _axios2.default.get('/api/students').then(function (results) {
       localStorage.setItem('students', JSON.stringify(results.data));
-      setStudents(JSON.parse(localStorage['students']));
+      setStudents(JSON.parse(localStorage.getItem('students')));
     }).catch(function (err) {
       return console.log(err);
     });
