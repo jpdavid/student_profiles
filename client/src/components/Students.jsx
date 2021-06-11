@@ -7,7 +7,7 @@ const Students = () => {
   const [nameInput, setNameInput] = useState('');
   const [searchTagInput, setSearchTagInput] = useState('');
   const [addTagInput, setAddTagInput] = useState({});
-  const [tags, setTags] = useState({});
+  const [tags, setTags] = useState(JSON.parse(localStorage.getItem('tags')) || {});
   const [expandedView, setExpandedView] = useState({});
 
   useEffect(() => {

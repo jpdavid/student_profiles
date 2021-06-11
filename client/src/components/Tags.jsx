@@ -8,13 +8,11 @@ const Tags = ({ id, tags, setTags, addTagInput, setAddTagInput }) => {
       e.preventDefault();
       const tagKey = e.target.getAttribute("name");
       if (!tags[tagKey]) {
-        localStorage.setItem("tags", JSON.stringify({...tags, [tagKey]: [addTagInput[tagKey]]}));
-        setTags(JSON.parse(localStorage.tags));
-        // setTags({...tags, [tagKey]: [addTagInput[tagKey]]});
+        localStorage.setItem('tags', JSON.stringify({...tags, [tagKey]: [addTagInput[tagKey]]}));
+        setTags(JSON.parse(localStorage.getItem('tags')));
       } else {
-        localStorage.setItem("tags", JSON.stringify({...tags, [tagKey]: [...tags[tagKey], addTagInput[tagKey]]}));
-        setTags(JSON.parse(localStorage.tags));
-        // setTags({...tags, [tagKey]: [...tags[tagKey], addTagInput[tagKey]]});
+        localStorage.setItem('tags', JSON.stringify({...tags, [tagKey]: [...tags[tagKey], addTagInput[tagKey]]}));
+        setTags(JSON.parse(localStorage.getItem('tags')));
       }
       setAddTagInput({});
     }

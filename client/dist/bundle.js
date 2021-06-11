@@ -189,7 +189,7 @@ var Students = function Students() {
       addTagInput = _useState8[0],
       setAddTagInput = _useState8[1];
 
-  var _useState9 = (0, _react.useState)({}),
+  var _useState9 = (0, _react.useState)(JSON.parse(localStorage.getItem('tags')) || {}),
       _useState10 = _slicedToArray(_useState9, 2),
       tags = _useState10[0],
       setTags = _useState10[1];
@@ -389,13 +389,11 @@ var Tags = function Tags(_ref) {
       e.preventDefault();
       var tagKey = e.target.getAttribute("name");
       if (!tags[tagKey]) {
-        localStorage.setItem("tags", JSON.stringify(_extends({}, tags, _defineProperty({}, tagKey, [addTagInput[tagKey]]))));
-        setTags(JSON.parse(localStorage.tags));
-        // setTags({...tags, [tagKey]: [addTagInput[tagKey]]});
+        localStorage.setItem('tags', JSON.stringify(_extends({}, tags, _defineProperty({}, tagKey, [addTagInput[tagKey]]))));
+        setTags(JSON.parse(localStorage.getItem('tags')));
       } else {
-        localStorage.setItem("tags", JSON.stringify(_extends({}, tags, _defineProperty({}, tagKey, [].concat(_toConsumableArray(tags[tagKey]), [addTagInput[tagKey]])))));
-        setTags(JSON.parse(localStorage.tags));
-        // setTags({...tags, [tagKey]: [...tags[tagKey], addTagInput[tagKey]]});
+        localStorage.setItem('tags', JSON.stringify(_extends({}, tags, _defineProperty({}, tagKey, [].concat(_toConsumableArray(tags[tagKey]), [addTagInput[tagKey]])))));
+        setTags(JSON.parse(localStorage.getItem('tags')));
       }
       setAddTagInput({});
     }
