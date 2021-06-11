@@ -387,13 +387,17 @@ var Tags = function Tags(_ref) {
 
     if (key === 'Enter') {
       e.preventDefault();
-      var indexTag = e.target.getAttribute("name");
-      if (!tags[indexTag]) {
-        setTags(_extends({}, tags, _defineProperty({}, indexTag, [addTagInput[indexTag]])));
+      var tagKey = e.target.getAttribute("name");
+      if (!tags[tagKey]) {
+        localStorage.setItem("tags", JSON.stringify(_extends({}, tags, _defineProperty({}, tagKey, [addTagInput[tagKey]]))));
+        setTags(JSON.parse(localStorage.tags));
+        // setTags({...tags, [tagKey]: [addTagInput[tagKey]]});
       } else {
-        setTags(_extends({}, tags, _defineProperty({}, indexTag, [].concat(_toConsumableArray(tags[indexTag]), [addTagInput[indexTag]]))));
+        localStorage.setItem("tags", JSON.stringify(_extends({}, tags, _defineProperty({}, tagKey, [].concat(_toConsumableArray(tags[tagKey]), [addTagInput[tagKey]])))));
+        setTags(JSON.parse(localStorage.tags));
+        // setTags({...tags, [tagKey]: [...tags[tagKey], addTagInput[tagKey]]});
       }
-      setAddTagInput('');
+      setAddTagInput({});
     }
   };
 
@@ -429,7 +433,7 @@ Tags.propTypes = {
   id: _propTypes2.default.number,
   tags: _propTypes2.default.object,
   setTags: _propTypes2.default.func,
-  addTagInput: _propTypes2.default.object,
+  addTagInput: _propTypes2.default.object || _propTypes2.default.string,
   setAddTagInput: _propTypes2.default.func
 };
 

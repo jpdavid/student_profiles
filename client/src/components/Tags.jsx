@@ -6,13 +6,17 @@ const Tags = ({ id, tags, setTags, addTagInput, setAddTagInput }) => {
     const { key } = e;
     if (key === 'Enter') {
       e.preventDefault();
-      const indexTag = e.target.getAttribute("name");
-      if (!tags[indexTag]) {
-        setTags({...tags, [indexTag]: [addTagInput[indexTag]]});
+      const tagKey = e.target.getAttribute("name");
+      if (!tags[tagKey]) {
+        localStorage.setItem("tags", JSON.stringify({...tags, [tagKey]: [addTagInput[tagKey]]}));
+        setTags(JSON.parse(localStorage.tags));
+        // setTags({...tags, [tagKey]: [addTagInput[tagKey]]});
       } else {
-        setTags({...tags, [indexTag]: [...tags[indexTag], addTagInput[indexTag]]});
+        localStorage.setItem("tags", JSON.stringify({...tags, [tagKey]: [...tags[tagKey], addTagInput[tagKey]]}));
+        setTags(JSON.parse(localStorage.tags));
+        // setTags({...tags, [tagKey]: [...tags[tagKey], addTagInput[tagKey]]});
       }
-      setAddTagInput('');
+      setAddTagInput({});
     }
   }
 
@@ -45,7 +49,7 @@ Tags.propTypes = {
   id: PropTypes.number,
   tags: PropTypes.object,
   setTags: PropTypes.func,
-  addTagInput: PropTypes.object,
+  addTagInput: PropTypes.object || PropTypes.string,
   setAddTagInput: PropTypes.func
 }
 
