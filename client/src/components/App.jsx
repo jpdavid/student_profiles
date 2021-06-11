@@ -5,6 +5,7 @@ const App = () => {
   const handleScroll = (e) => {
     if (e.target.classList.contains("on-scrollbar") === false) {
       e.target.classList.add("on-scrollbar");
+    } else {
       setTimeout(() => e.target.classList.remove("on-scrollbar"), 2000);
     }
   }

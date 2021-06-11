@@ -20,16 +20,16 @@ const Students = () => {
   }, []);
 
   const handleExpandedView = (e) => {
-    const index = e.target.getAttribute("name");
-    if (!expandedView[index]) {
-      setExpandedView({...expandedView, [index]: true});
+    const id = e.target.getAttribute("name");
+    if (!expandedView[id]) {
+      setExpandedView({...expandedView, [id]: true});
     } else {
-      setExpandedView({...expandedView, [index]: !expandedView[index]});
+      setExpandedView({...expandedView, [id]: !expandedView[id]});
     }
   }
 
-  const expandedViewMode = (index, grades) => {
-    if (expandedView[index]) {
+  const expandedViewMode = (id, grades) => {
+    if (expandedView[id]) {
       return (
         <div className="grades">
           <br/>
@@ -83,7 +83,7 @@ const Students = () => {
                     <div className="student-details">Company: {student.company}</div>
                     <div className="student-details">Skill: {student.skill}</div>
                     <div className="student-details">Average: {average}%</div>
-                    {expandedViewMode(index, student.grades)}
+                    {expandedViewMode(student.id, student.grades)}
 
                     <Tags
                       id={Number(student.id)}
@@ -96,12 +96,12 @@ const Students = () => {
                 </div>
                 <button
                   type="button"
-                  name={index}
+                  name={student.id}
                   onClick={handleExpandedView}
                 >
-                  {!expandedView[index]
-                    ? <i className="fas fa-plus" name={index}/>
-                    : <i className="fas fa-minus" name={index}/>
+                  {!expandedView[student.id]
+                    ? <i className="fas fa-plus" name={student.id}/>
+                    : <i className="fas fa-minus" name={student.id}/>
                   }
                 </button>
               </div>

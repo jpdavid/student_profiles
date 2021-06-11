@@ -114,6 +114,7 @@ var App = function App() {
   var handleScroll = function handleScroll(e) {
     if (e.target.classList.contains("on-scrollbar") === false) {
       e.target.classList.add("on-scrollbar");
+    } else {
       setTimeout(function () {
         return e.target.classList.remove("on-scrollbar");
       }, 2000);
@@ -208,16 +209,16 @@ var Students = function Students() {
   }, []);
 
   var handleExpandedView = function handleExpandedView(e) {
-    var index = e.target.getAttribute("name");
-    if (!expandedView[index]) {
-      setExpandedView(_extends({}, expandedView, _defineProperty({}, index, true)));
+    var id = e.target.getAttribute("name");
+    if (!expandedView[id]) {
+      setExpandedView(_extends({}, expandedView, _defineProperty({}, id, true)));
     } else {
-      setExpandedView(_extends({}, expandedView, _defineProperty({}, index, !expandedView[index])));
+      setExpandedView(_extends({}, expandedView, _defineProperty({}, id, !expandedView[id])));
     }
   };
 
-  var expandedViewMode = function expandedViewMode(index, grades) {
-    if (expandedView[index]) {
+  var expandedViewMode = function expandedViewMode(id, grades) {
+    if (expandedView[id]) {
       return _react2.default.createElement(
         'div',
         { className: 'grades' },
@@ -315,7 +316,7 @@ var Students = function Students() {
                 average,
                 '%'
               ),
-              expandedViewMode(index, student.grades),
+              expandedViewMode(student.id, student.grades),
               _react2.default.createElement(_Tags2.default, {
                 id: Number(student.id),
                 tags: tags,
@@ -329,10 +330,10 @@ var Students = function Students() {
             'button',
             {
               type: 'button',
-              name: index,
+              name: student.id,
               onClick: handleExpandedView
             },
-            !expandedView[index] ? _react2.default.createElement('i', { className: 'fas fa-plus', name: index }) : _react2.default.createElement('i', { className: 'fas fa-minus', name: index })
+            !expandedView[student.id] ? _react2.default.createElement('i', { className: 'fas fa-plus', name: student.id }) : _react2.default.createElement('i', { className: 'fas fa-minus', name: student.id })
           )
         );
       })
