@@ -159,6 +159,10 @@ button:hover {
   margin-bottom: 1%;
 }
 
+.tags:hover {
+  cursor: pointer;
+}
+
 .tag-input {
   margin-top: 5px;
   margin-left: 0px;

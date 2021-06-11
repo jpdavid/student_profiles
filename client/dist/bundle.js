@@ -399,6 +399,14 @@ var Tags = function Tags(_ref) {
     }
   };
 
+  var handleRemoveTag = function handleRemoveTag(e) {
+    var tagKey = e.target.getAttribute("name");
+    var tagIndex = e.target.getAttribute("data-tag");
+    tags[tagKey].splice(tagIndex, 1);
+    localStorage.setItem('tags', JSON.stringify(tags));
+    setTags(JSON.parse(localStorage.getItem('tags')));
+  };
+
   return _react2.default.createElement(
     'div',
     null,
@@ -408,7 +416,13 @@ var Tags = function Tags(_ref) {
       tags[id] ? tags[id].map(function (tag, index) {
         return _react2.default.createElement(
           'div',
-          { className: 'tags', key: index },
+          {
+            className: 'tags',
+            key: index,
+            name: id,
+            'data-tag': index,
+            onClick: handleRemoveTag
+          },
           tag
         );
       }) : null

@@ -18,13 +18,29 @@ const Tags = ({ id, tags, setTags, addTagInput, setAddTagInput }) => {
     }
   }
 
+  const handleRemoveTag = (e) => {
+    const tagKey = e.target.getAttribute("name");
+    const tagIndex = e.target.getAttribute("data-tag");
+    tags[tagKey].splice(tagIndex, 1);
+    localStorage.setItem('tags', JSON.stringify(tags));
+    setTags(JSON.parse(localStorage.getItem('tags')));
+  }
+
   return (
     <div>
       <div id="tag-container">
         {tags[id]
           ? tags[id].map((tag, index) => {
               return (
-                <div className="tags" key={index}>{tag}</div>
+                <div
+                  className="tags"
+                  key={index}
+                  name={id}
+                  data-tag={index}
+                  onClick={handleRemoveTag}
+                >
+                  {tag}
+                </div>
               )
             })
           : null
