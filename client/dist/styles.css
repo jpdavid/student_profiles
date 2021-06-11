@@ -3,7 +3,6 @@
 body {
   font-family: 'Raleway', sans-serif;
   background-color: rgb(241, 241, 241);
-  /* position: fixed; */
 }
 
 #app {
@@ -54,7 +53,6 @@ div::-webkit-scrollbar-thumb {
 .on-scrollbar::-webkit-scrollbar-thumb {
   background-color: rgb(128, 127, 128);
   border-radius: 5px;
-  /* background-clip: padding-box; */
   border: 2px solid transparent;
   background-clip: content-box;
 }
