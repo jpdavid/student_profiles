@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Tags = ({ id, tags, setTags, addTagInput, setAddTagInput }) => {
   const handleKeyDown = (e) => {
@@ -38,6 +39,14 @@ const Tags = ({ id, tags, setTags, addTagInput, setAddTagInput }) => {
       />
     </div>
   )
+}
+
+Tags.propTypes = {
+  id: PropTypes.number,
+  tags: PropTypes.object,
+  setTags: PropTypes.func,
+  addTagInput: PropTypes.object,
+  setAddTagInput: PropTypes.func
 }
 
 export default Tags;
